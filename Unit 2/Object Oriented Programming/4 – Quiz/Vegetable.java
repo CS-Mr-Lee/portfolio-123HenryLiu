@@ -74,7 +74,7 @@ public class Vegetable {
       output += "\n";
       
       String output = "Calories: ";
-      output += calories:
+      output += calories;
       output += "\n";
       
       return output;
