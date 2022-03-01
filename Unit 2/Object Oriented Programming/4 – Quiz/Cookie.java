@@ -76,8 +76,7 @@ public class Cookie {
       return isPackaged;
    }
    
-   
-   
+   // mutator methods
    
    public void open() {
       isPackaged = false;
@@ -87,7 +86,7 @@ public class Cookie {
       int caloriesEaten;
       
       if (isPackaged = false) {
-         caloriesEaten = -2
+         caloriesEaten = -2;
       } else if (weight > this.weight) {
          caloriesEaten = -1;
       } else {
@@ -99,7 +98,7 @@ public class Cookie {
    }
    
    public String toString () {
-      String output += "Name: "
+      String output += "Name: ";
       output += name;
       output += "\n";
    }
