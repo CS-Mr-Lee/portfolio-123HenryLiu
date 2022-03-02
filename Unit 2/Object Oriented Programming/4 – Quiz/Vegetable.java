@@ -7,18 +7,22 @@
  */
 public class Vegetable {
 
-   // name of the vegetable
+  /** name of the vegetable */
    private String name;
    
-   // weight of the vegetable
+  /** weight of the vegetable in grams */
    private double weight;
 
-   // amount of calories
+  /** amount of calories */
    private int calories;
-   
+  
+  /** default constructor */
    public Vegetable() {
    }
    
+  /**
+   *
+   */
    public Vegetable(String name, double weight, int calories) {
       
       this.name = name;
@@ -31,7 +35,7 @@ public class Vegetable {
       
       if (calories < 0) {
          this.calories = 0;
-      } else (
+      } else {
          this.calories = calories;
       }
       
@@ -57,7 +61,8 @@ public class Vegetable {
       if (weight > this.weight) {
          caloriesEaten = -1;
       } else {
-         caloriesEaten = (weight / this.weight) * calories;
+         caloriesEaten = (int)((weight / this.weight) * calories);
+         calories -= caloriesEaten;
       }
       
       return caloriesEaten;
@@ -69,11 +74,11 @@ public class Vegetable {
       output += name;
       output += "\n";
       
-      String output = "Weight: ";
+      output += "Weight: ";
       output += weight;
-      output += "\n";
+      output += " grams\n";
       
-      String output = "Calories: ";
+      output += "Calories: ";
       output += calories;
       output += "\n";
       
