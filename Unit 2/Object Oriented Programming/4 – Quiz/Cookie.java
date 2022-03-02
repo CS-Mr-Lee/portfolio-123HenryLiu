@@ -7,40 +7,26 @@
  */
 public class Cookie {
 
-   // name of the vegetable
+  /** name of the cookie */
    private String name;
    
-   // weight of the vegetable
+  /** weight of the cookie in grams */
    private double weight;
 
-   // amount of calories
+  /** amount of calories */
    private int calories;
    
-   // whether it is packaged or not
+  /** whether it is packaged or not */
    private boolean isPackaged;
    
+  /** default constructor */
    public Cookie() {
    }
-   
-   public Vegetable(String name, double weight, int calories) {
-   
-      this.name = name;
-   
-      if (weight < 0) {
-         this.weight = 0;
-      } else {
-         this.weight = weight;
-      }
-      
-      if (calories < 0) {
-         this.calories = 0;
-      } else {
-         this.calories = calories;
-      }
-      
-   }
-   
-   public Vegetable(String name, double weight, int calories, boolean isPackaged) {
+     
+  /** 
+   * @param 
+   */
+   public Cookie(String name, double weight, int calories, boolean isPackaged) {
    
       this.name = name;
    
@@ -85,12 +71,13 @@ public class Cookie {
    public int eaten(double weight) {
       int caloriesEaten;
       
-      if (isPackaged = false) {
+      if (isPackaged = true) {
          caloriesEaten = -2;
       } else if (weight > this.weight) {
          caloriesEaten = -1;
       } else {
-         caloriesEaten = (weight / this.weight) * calories;
+         caloriesEaten = (int)((weight / this.weight) * calories);
+         calories -= caloriesEaten;
       }
       
       return caloriesEaten;
@@ -98,9 +85,26 @@ public class Cookie {
    }
    
    public String toString () {
-      String output += "Name: ";
+      String output = "Name: ";
       output += name;
       output += "\n";
+      
+      output += "Weight: ";
+      output += weight;
+      output += " grams\n";
+      
+      output += "Calories: ";
+      output += calories;
+      output += "\n";
+      
+      output += "Packaged: ";
+      if (isPackaged) {
+         output += "Yes\n";
+      } else {
+         output += "No\n";
+      }
+      
+      return output;
    }
    
 }
