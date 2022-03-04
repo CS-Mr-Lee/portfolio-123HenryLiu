@@ -2,36 +2,47 @@
  * @author Henry Liu
  * Mar 1, 2022
  *
- * This program creates a cookie class
- * 
+ * This program creates a human
  */
 public class Human {
+
+   //attributes
    
-  /** The name of the human */
+   /** The name of the human */
    private String name;
 
-  /** the weight of the human in kilograms */
+   /** the weight of the human in kilograms */
    private double weight;
 
-  /** the energy level of the human as a percentage from 0 to 100 */
+   /** the energy level of the human as a percentage from 0 to 100 */
    private int energyLevel;
   
-  /**
-   * 
-   */
+   //constructors
+   
+   /** default constructor */
    public Human() {
    }
-  
+     
+  /** 
+   * creating the human
+   *
+   * @param name, name of the human
+   * @param weight, weight of the human in kilograms
+   * @param energyLevel, a percentage that shows the human's energy
+   */
    public Human(String name, double weight, int energyLevel) {
   
+      //initializing name
       this.name = name;
-
+      
+      //weight cannot be negative
       if (weight < 0) {
          this.weight = 0;
       } else {
         this.weight = weight;
       }
      
+      //energy level must be from 0 to 100 percent
       if (energyLevel < 0) {
          this.energyLevel = 0;
       } else if (energyLevel > 100) {
@@ -42,75 +53,135 @@ public class Human {
       
    }
    
-   
    // accessor methods
    
+  /**
+   * getting the name
+   *
+   * @return name, name of the human
+   */
    public String getName() {
-      return name;
+      return this.name;
    }  
    
+  /**
+   * getting the weight
+   *
+   * @return weight, human's weight in kilograms
+   */
    public double getWeight() {
-      return weight;
+      return this.weight;
    }  
-   
+
+  /**
+   * getting the energy
+   *
+   * @return energyLevel, human's energy as a percentage
+   */
    public int getEnergyLevel() {
-      return energyLevel;
+      return this.energyLevel;
    }  
-   
    
    //mutator methods
    
+  /**
+   * the human sleeps
+   * energy increases
+   *
+   * @param hours, number of hours the human sleeps
+   */
    public void sleep(int hours) {
       if (hours > 0) {
          energyLevel += hours * 10;
       }
    }
 
+  /**
+   * the human runs
+   * both weight and energy decrease
+   *
+   * @param km, number of kilometers run
+   */
    public void run(double km) {
       if (km > 0){
          weight -= 0.001 * km;
-         energyLevel -= km * 3;
+         energyLevel -= (int)(km * 3);
       }
    }
    
-   public void eat(Vegetable veg, double grams) {
+  /**
+   * eating a vegetable
+   * weight and energy go up
+   * 
+   * @param veg, vegetable name
+   * @param grams, number of grams eaten
+   * @return veggieEat, has a warning message if too much is eaten
+   */
+   public String eat(Vegetable veg, double grams) {
       
       int calIntakeVeg = veg.eaten(grams);
+      String veggieEat;
       
+      //prints out message if vegetable cannot be eaten
       if (calIntakeVeg == -1) {
-         System.out.println("I don’t have that much food");
+         veggieEat = "I don’t have that much food\n";
       } else {
          weight += grams / 1000;
       
-         energyLevel += calIntakeVeg / 15;
+         //if successfully eaten, veggieEat contains nothing
+         energyLevel += (int)(calIntakeVeg / 15);
          if (energyLevel > 100) {
             energyLevel = 100;
+            veggieEat = "";
          } else {
-            energyLevel = energyLevel;
+            veggieEat = "";
          }
       }
+      
+      return veggieEat;
+      
    }
    
-   public void eat(Cookie food, double grams) {
+  /**
+   * eating a cookie
+   * weight and energy go up
+   * 
+   * @param food, cookie name
+   * @param grams, number of grams eaten
+   * @return cookieEat, a warning message if too much is eaten or cookie is packaged
+   */
+   public String eat(Cookie food, double grams) {
       
       int calIntakeCookie = food.eaten(grams);
+      String cookieEat;
       
+      //prints out message if cookie cannot be eaten
       if (calIntakeCookie == -2) {
-         System.out.println("“I can’t eat the bag");
+         cookieEat = "I can’t eat the bag\n";
       } else if (calIntakeCookie == -1) {
-         System.out.println("I don’t have that much food");
+         cookieEat = "I don’t have that much food\n";
       } else {
          weight += grams / 1000;
       
-         energyLevel += calIntakeCookie / 15;
+         //if successfully eaten, cookieEat contains nothing
+         energyLevel += (int)(calIntakeCookie / 15);
          if (energyLevel > 100) {
             energyLevel = 100;
+            cookieEat = "";
          } else {
-            energyLevel = energyLevel;
+            cookieEat = "";
          }
       }
+      
+      return cookieEat;
+      
    }
    
+  /**
+   * initializing toString method
+   *
+   * @return output, outputs all the information
+   */
    public String toString() {
       
       String output = "Name: ";
@@ -123,7 +194,7 @@ public class Human {
       
       output += "Energy level: ";
       output += energyLevel;
-      output += "percent\n";
+      output += " percent\n";
       
       return output;
    }
