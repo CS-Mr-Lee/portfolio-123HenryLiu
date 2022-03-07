@@ -17,9 +17,9 @@ public class Liu_Henry_OOQuiz1 {
       
       Cookie perfectDesert = new Cookie("Marshmallow S'mores", 22.5, 350, false); 
       
-      System.out.print(hungryPerson.eat(healthyCookie, 9));
+      hungryPerson.eat(healthyCookie, 9);
       
-      System.out.print(hungryPerson.eat(purpleVeggie, 550));
+      hungryPerson.eat(purpleVeggie, 550);
 
       hungryPerson.eat(perfectDesert, 18);
    }
