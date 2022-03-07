@@ -115,7 +115,6 @@ public class Human {
    * 
    * @param veg, vegetable name
    * @param grams, number of grams eaten
-   * @return veggieEat, has a warning message if too much is eaten
    */
    public void eat(Vegetable veg, double grams) {
       
@@ -144,7 +143,6 @@ public class Human {
    * 
    * @param food, cookie name
    * @param grams, number of grams eaten
-   * @return cookieEat, a warning message if too much is eaten or cookie is packaged
    */
    public void eat(Cookie food, double grams) {
       
