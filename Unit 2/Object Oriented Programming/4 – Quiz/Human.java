@@ -117,28 +117,24 @@ public class Human {
    * @param grams, number of grams eaten
    * @return veggieEat, has a warning message if too much is eaten
    */
-   public String eat(Vegetable veg, double grams) {
+   public void eat(Vegetable veg, double grams) {
       
       int calIntakeVeg = veg.eaten(grams);
-      String veggieEat;
       
       //prints out message if vegetable cannot be eaten
       if (calIntakeVeg == -1) {
-         veggieEat = "I don’t have that much food\n";
+         System.out.println("I don’t have that much food");
       } else {
          weight += grams / 1000;
       
-         //if successfully eaten, veggieEat contains nothing
+         //if successfully eaten, no message pops up
          energyLevel += (int)(calIntakeVeg / 15);
          if (energyLevel > 100) {
             energyLevel = 100;
-            veggieEat = "";
          } else {
-            veggieEat = "";
+            this.energyLevel = energyLevel;
          }
       }
-      
-      return veggieEat;
       
    }
    
@@ -150,30 +146,26 @@ public class Human {
    * @param grams, number of grams eaten
    * @return cookieEat, a warning message if too much is eaten or cookie is packaged
    */
-   public String eat(Cookie food, double grams) {
+   public void eat(Cookie food, double grams) {
       
       int calIntakeCookie = food.eaten(grams);
-      String cookieEat;
       
       //prints out message if cookie cannot be eaten
       if (calIntakeCookie == -2) {
-         cookieEat = "I can’t eat the bag\n";
+         System.out.println("I can’t eat the bag");
       } else if (calIntakeCookie == -1) {
-         cookieEat = "I don’t have that much food\n";
+         System.out.println("I don’t have that much food");
       } else {
          weight += grams / 1000;
       
-         //if successfully eaten, cookieEat contains nothing
+         //if successfully eaten, no message pops up
          energyLevel += (int)(calIntakeCookie / 15);
          if (energyLevel > 100) {
             energyLevel = 100;
-            cookieEat = "";
          } else {
-            cookieEat = "";
+            this.energyLevel = energyLevel;
          }
       }
-      
-      return cookieEat;
       
    }
    
